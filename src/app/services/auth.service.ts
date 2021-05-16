@@ -83,9 +83,11 @@ export class AuthService {
     );
   }
 
-  addPortfolio(model: any) {
+  addPortfolio(model: {}) {
+    //console.log(model);
+
     //console.warn(this.addForm.value);
-    return this.http.post(this.siteUrl + 'add', model).pipe(
+    return this.http.post(this.siteUrl + 'addPortfolio', model).pipe(
       map((response: any) => {
         const user = response;
         if (user.status == true) {

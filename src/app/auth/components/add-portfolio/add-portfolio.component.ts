@@ -35,7 +35,7 @@ export class AddPortfolioComponent implements OnInit {
     console.log(this.addForm.value);
     this.authService.addPortfolio(this.addForm.value).subscribe(
       (next) => {
-        console.log('User loged in: ');
+        console.log('Portfolio added ');
       },
       (error) => {
         console.log('Error: ' + error);
@@ -45,8 +45,9 @@ export class AddPortfolioComponent implements OnInit {
 
   callApi() {
     //console.warn(this.addForm.value);
-    const cryptoUrl = 'https://api.coingecko.com/api/v3/';
-    this.http.get(cryptoUrl + 'coins/list', {}).subscribe(
+    const cryptoUrl =
+      'https://api.coingecko.com/api/v3/coins/markets?vs_currency=inr&order=market_cap_desc&per_page=50&page=1&sparkline=false';
+    this.http.get(cryptoUrl, {}).subscribe(
       (response: any) => {
         //console.log(response);
         this.cryptoList = response;

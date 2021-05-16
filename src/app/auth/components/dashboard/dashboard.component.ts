@@ -11,6 +11,7 @@ export class DashboardComponent implements OnInit {
   myList: any;
   singleList: any;
   investment: any;
+  currentVal: any;
   ngOnInit(): void {}
   constructor(private authService: AuthService, private http: HttpClient) {
     this.uid = authService.getUid();
@@ -59,20 +60,7 @@ export class DashboardComponent implements OnInit {
       (response: any) => {
         //console.log(response);
         this.investment = response.investment;
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  }
-
-  getCDetails(cid: any) {
-    //console.warn(this.addForm.value);
-    const cryptoUrl =
-      'https://api.coingecko.com/api/v3/simple/price?ids=' + cid;
-    this.http.get(cryptoUrl + '&vs_currencies=inr', {}).subscribe(
-      (response: any) => {
-        console.log(response);
+        this.currentVal = response.currentVal;
       },
       (error) => {
         console.log(error);

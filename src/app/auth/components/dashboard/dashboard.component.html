@@ -14,8 +14,8 @@
   </div>
 
   <div class="col-md-3 text-center">
-    <p>TOTAL P/L</p>
-    <h2>-</h2>
+    <p>CURRENT VALUE</p>
+    <h2>{{ currentVal }}</h2>
   </div>
 </div>
 
@@ -26,15 +26,24 @@
       <th>Currency</th>
       <th>Investment</th>
       <th>Quantity</th>
+      <th>Avg Price/Per quantity</th>
+      <th>Current Value</th>
+      <th>P/L</th>
       <th>History</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let c of myList; let i = index">
+    <tr
+      *ngFor="let c of myList; let i = index"
+      [style.color]="c.pl - c.investment > 0 ? 'green' : 'red'"
+    >
       <td>{{ i + 1 }}</td>
       <td>{{ c.currency_id }}</td>
       <td>&#8377;{{ c.spot_price * c.quantity }}</td>
       <td>{{ c.quantity }}</td>
+      <td>&#8377;{{ c.spot_price }}</td>
+      <td>&#8377;{{ c.cprice }}</td>
+      <td>&#8377;{{ c.pl - c.investment }}</td>
       <td>
         <button
           class="btn btn-success"
@@ -74,7 +83,7 @@
         {{ c.buy_sell | titlecase }}
       </td>
       <td>
-        {{ getCDetails(c.currency_id) }}
+        {{ c.pl - c.investment }}
       </td>
       <td>{{ c.date | date: "MMMM d, y" }}</td>
     </tr>

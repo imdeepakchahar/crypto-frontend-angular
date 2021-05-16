@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <form [formGroup]="loginForm" (ngSubmit)="submitLogin()">
+      <label>Email</label>
+      <input type="text" class="form-control" formControlName="email" /><br />
+
+      <label>Password</label>
+      <input
+        type="password"
+        class="form-control"
+        formControlName="password"
+      /><br />
+
+      <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+  </div>
+  <div class="col-md-3"></div>
+</div>

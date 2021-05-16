@@ -1,0 +1,72 @@
+<div class="row">
+  <div class="col-md-3 text-center">
+    <p>Investment</p>
+    <h2>{{ investment }}</h2>
+  </div>
+</div>
+
+<table class="table table-responsive" *ngIf="myList != undefined">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Currency</th>
+      <th>Investment</th>
+      <th>Quantity</th>
+      <th>History</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of myList; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>{{ c.currency_id }}</td>
+      <td>&#8377;{{ c.spot_price * c.quantity }}</td>
+      <td>{{ c.quantity }}</td>
+      <td>
+        <button
+          class="btn btn-success"
+          (click)="getSingleDetails(c.currency_id)"
+        >
+          View
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 *ngIf="singleList != undefined">Details</h2>
+
+<table class="table table-responsive" *ngIf="singleList != undefined">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Currency</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Buy/Sell</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="let c of singleList; let i = index"
+      [style.color]="c.buy_sell == 'buy' ? 'green' : 'red'"
+    >
+      <td>{{ i + 1 }}</td>
+      <td>{{ c.currency_id | uppercase }}</td>
+      <td>&#8377;{{ c.spot_price }}</td>
+      <td>{{ c.quantity }}</td>
+      <td>
+        {{ c.buy_sell | titlecase }}
+      </td>
+      <td>{{ c.date | date: "MMMM d, y" }}</td>
+    </tr>
+  </tbody>
+</table>
+<style>
+  table > tbody > tr > td {
+    border: 1px solid #ddd;
+  }
+  .table > thead > tr > th {
+    border: 2px solid #ddd;
+  }
+</style>

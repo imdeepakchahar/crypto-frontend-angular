@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <form [formGroup]="addForm" (ngSubmit)="submitPortfolio()">
+      <input
+        type="hidden"
+        class="form-control"
+        formControlName="user_id"
+        [(ngModel)]="uid"
+      /><br />
+
+      <label>Currency</label>
+      <select class="form-control" formControlName="currency_id">
+        <option *ngFor="let c of cryptoList" [value]="c.id">
+          {{ c.name }}
+        </option>
+      </select>
+
+      <br />
+
+      <label>Price</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="spot_price"
+      /><br />
+
+      <label>Quantity</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="quantity"
+      /><br />
+
+      <label>Buy/Sell</label>
+      <select class="form-control" formControlName="buy_sell">
+        <option value="buy">Buy</option>
+        <option value="sell">Sell</option>
+      </select>
+      <br />
+
+      <label>Date</label>
+      <input type="date" class="form-control" formControlName="date" /><br />
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  <div class="col-md-3"></div>
+</div>

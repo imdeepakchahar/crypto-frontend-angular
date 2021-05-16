@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <form [formGroup]="registerForm" (ngSubmit)="submitRegister()">
+      <label>First Name</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="first_name"
+      /><br />
+
+      <label>Last Name</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="last_name"
+      /><br />
+
+      <label>Email</label>
+      <input type="text" class="form-control" formControlName="email" /><br />
+
+      <label>Mobile</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="mobile_number"
+      /><br />
+
+      <label>Trading Experience</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="trading_experience"
+      /><br />
+
+      <label>Password</label>
+      <input
+        type="password"
+        class="form-control"
+        formControlName="password"
+      /><br />
+
+      <button type="submit" class="btn btn-primary">Signup</button>
+    </form>
+  </div>
+  <div class="col-md-3"></div>
+</div>

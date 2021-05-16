@@ -65,4 +65,18 @@ export class DashboardComponent implements OnInit {
       }
     );
   }
+
+  getCDetails(cid: any) {
+    //console.warn(this.addForm.value);
+    const cryptoUrl =
+      'https://api.coingecko.com/api/v3/simple/price?ids=' + cid;
+    this.http.get(cryptoUrl + '&vs_currencies=inr', {}).subscribe(
+      (response: any) => {
+        console.log(response);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
 }

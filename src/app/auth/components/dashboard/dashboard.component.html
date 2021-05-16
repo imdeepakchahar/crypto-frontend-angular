@@ -39,9 +39,9 @@
     >
       <td>{{ i + 1 }}</td>
       <td>{{ c.currency_id }}</td>
-      <td>&#8377;{{ c.spot_price * c.quantity }}</td>
+      <td>&#8377;{{ c.investment }}</td>
       <td>{{ c.quantity }}</td>
-      <td>&#8377;{{ c.spot_price }}</td>
+      <td>&#8377;{{ c.investment / c.quantity }}</td>
       <td>&#8377;{{ c.cprice }}</td>
       <td>&#8377;{{ c.pl - c.investment }}</td>
       <td>
@@ -63,7 +63,7 @@
     <tr>
       <th>#</th>
       <th>Currency</th>
-      <th>Price</th>
+      <th>Spot Price</th>
       <th>Quantity</th>
       <th>Buy/Sell</th>
       <th>P/L</th>
